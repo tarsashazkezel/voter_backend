@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Alberlet extends Model
 {
+    protected $table = 'alberlet';
     public function tarsashaz()
     {
         return $this->belongsTo(Tarsashaz::class);

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Napirendi_pont extends Model
 {
+    protected $table = 'napirendi_pont';
     public function kozgyules(){
         return $this->belongsTo(Kozgyules::class);
     }

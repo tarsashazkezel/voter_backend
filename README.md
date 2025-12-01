@@ -10,7 +10,7 @@ Egy társasházi lakógyűléshez készülő szavazó honlapnak a backend rész�
 - <li>Traxler Koppány</li>
 - <li>Ewemor Martin</li>
 
-## Jelenlegi teendők
+## Eddig megtett teendők
 - Megvan: TODO: migrációk létrehozása
 - Megvan: TODO: tesztadatok generálása Még nem kell: 
 - Megvan: TODO: ha kell, a .env állományban az adatbázis szegmens módosítása

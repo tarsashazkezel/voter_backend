@@ -51,7 +51,7 @@ Route::post('/resztvevo', [ResztvevoController::class, 'addResztvevo']);
 Route::put('/resztvevo/{id}', [ResztvevoController::class, 'updateResztvevo']);
 Route::delete('/resztvevo/{id}', [ResztvevoController::class, 'destroyResztvevo']);
 
-Route::get('/napirendi_pont', [Napirendi_pontController::class, 'getNapirendi_pont']);
-Route::post('/napirendi_pont', [Napirendi_pontController::class, 'addNapirendi_pont']);
-Route::put('/napirendi_pont/{id}', [Napirendi_pontController::class, 'updateNapirendi_pont']);
-Route::delete('/napirendi_pont/{id}', [Napirendi_pontController::class, 'deleteNapirendi_pont']);
+Route::get('/napirendipont', [Napirendi_pontController::class, 'getNapirendi_pont']);
+Route::post('/napirendipont', [Napirendi_pontController::class, 'addNapirendi_pont']);
+Route::put('/napirendipont/{id}', [Napirendi_pontController::class, 'updateNapirendi_pont']);
+Route::delete('/napirendipont/{id}', [Napirendi_pontController::class, 'deleteNapirendi_pont']);
