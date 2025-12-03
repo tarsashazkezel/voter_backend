@@ -49,6 +49,7 @@ php artisan make:migration create_tablanev_table
 ```
 - a táblák ugyanazok, mint fent
 - a táblák mezői a /docs táblában található "adatbazis_terv_elso.png" fájl alapján lesznek hozzáadva
+ ![Adatbázis Terv](adatbazis_terv_elso.png)
 - pl. 
 ```bash
     public function up(): void
