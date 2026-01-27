@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tulajdonos', function (Blueprint $table) {
+        Schema::create('resolutions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('alberlet_id')->constrained('alberlet');
-            $table->string('nev');
-            $table->string('email');
-            $table->string('jelszo');
-            // $table->timestamps();
+            $table->text("text");
+            $table->boolean("requires_unanimous")->default(false)->comment("38. § (3) egyhangúság");
+            $table->foreignId("agenda_item_id")->constrained("agenda_items")->cascadeOnDelete();
+            $table->timestamps();
         });
     }
 
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tulajdonos');
+        Schema::dropIfExists('resolutions');
     }
 };

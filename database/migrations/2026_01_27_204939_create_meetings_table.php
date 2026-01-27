@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tarsashaz', function (Blueprint $table) {
+        Schema::create('meetings', function (Blueprint $table) {
             $table->id();
-            $table->string('nev',50);
-            $table->string('alapito_dokumentum');
-            $table->string('szavazasi_szabaly');
-            // $table->timestamps();
+            $table->string("title");
+            $table->dateTime("meeting_date");
+            $table->string("location");
+            $table->foreignId("created_by")->constrained("users");
+            $table->timestamps();
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tarsashaz');
+        Schema::dropIfExists('meetings');
     }
 };

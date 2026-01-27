@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('felszolalas', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('napirendi_pont_id')->constrained('napirendi_pont');
-            $table->foreignId('resztvevo_id')->constrained('resztvevo');
-            $table->string("szoveg");
-            $table->dateTime("idopont");
+	        $table->string('name')->unique();
             // $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('felszolalas');
+        Schema::dropIfExists('roles');
     }
 };

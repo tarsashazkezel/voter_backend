@@ -1,6 +1,8 @@
 # Tartalomjegyzék
 - Tartalomjegyzék
 - Előkészületek
+- Verzió 0.03
+- Verzió 0.02
 - Verzió 0.001
   - ha nem lenne letöltve a project
   - Kontrollerek létrehozása
@@ -18,6 +20,21 @@
 - adatbázis terv
 - ha nem lett volna meg, akkor kell egy 
 php artisan install:api parancsot futtatni
+
+# Verzió 0.03
+## Gondolatok:
+- ChatGPT által generált kódok nagyrésze beírva
+- harmadik változatú adatbázis a docs mappában
+- migrálás megtörtént, mintaadatok a seederekben
+- modellek legenerálva, adatbázis kapcsolatok beállítva
+- HasRole Trait beállítva
+- VoteService elkezdve
+- Policy-k elkezdve
+## További teendők
+- Controllerek legenerálása
+- végpontok létrehozása (azaz módosítása a sanctumot is beleemelve)
+- LEGFONTOSABB: tesztelés !!!!!
+- teljes dokumentáció befejezése
 
 # Verzió 0.02
 ## Gondolatok

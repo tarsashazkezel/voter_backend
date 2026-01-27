@@ -6,15 +6,17 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class Tarsashaz extends Seeder
+class RoleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $sql = file_get_contents( __DIR__ . "/tarsashaz.sql" );
-
-        DB::unprepared( $sql );
+        DB::table('roles')->insert([
+            ['name' => 'admin'],
+            ['name' => 'owner'],
+            ['name' => 'auditor'],
+        ]);
     }
 }

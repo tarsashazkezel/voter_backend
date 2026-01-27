@@ -23,14 +23,12 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            Tarsashaz::class,
-            Alberlet::class,
-            Kozgyules::class,
-            Napirendi_pont::class,
-            Tulajdonos::class,
-            Resztvevo::class,
-            Felszolalas::class,
-            Szavazat::class,
+            RoleSeeder::class,
+            UserSeeder::class,
+            MeetingSeeder::class,
+            AgendaItemSeeder::class,
+            ResolutionSeeder::class,
+            VoteSeeder::class,
         ]);
 
     }

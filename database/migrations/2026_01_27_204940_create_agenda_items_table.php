@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('resztvevo', function (Blueprint $table) {
-            $table->unsignedBigInteger('meghatalmazott_tulajdonos_id')->nullable()->change();        
+        Schema::create('agenda_items', function (Blueprint $table) {
+            $table->id();
+            $table->string("title");
+            $table->foreignId("meeting_id")->constrained("meetings")->cascadeOnDelete();
+            $table->text("description")->nullable();
+            $table->timestamps();
         });
     }
 
@@ -21,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('resztvevo', function (Blueprint $table) {
-            $table->unsignedBigInteger('meghatalmazott_tulajdonos_id')->change();
-        });
+        Schema::dropIfExists('agenda_items');
     }
 };
