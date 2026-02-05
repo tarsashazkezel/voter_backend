@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Traits\HasRole;
+use App\Services\AbilityService;
 
-class User extends Model
+class User extends Authenticatable
 {
      use HasApiTokens, Notifiable, HasRole;
 
@@ -43,5 +43,11 @@ class User extends Model
     {
         return $this->hasMany(Vote::class);
     }
+
+    public function canDo(string $ability): bool
+    {
+        return app(AbilityService::class)->can($this, $ability);
+    }
+
 
 }

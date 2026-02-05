@@ -3,54 +3,37 @@
 namespace App\Http\Controllers\api;
 
 use Illuminate\Http\Request;
+use App\Models\Resolution;
+use App\Services\ResolutionService;
 
 class ResolutionController
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+    public function __construct(
+        protected ResolutionService $service
+    ) {}
+
+    public function index(){
+        return $this->service->index();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        $this->authorize('create', Resolution::class);
-
-        $data = $request->validate([
-            'agenda_item_id' => 'required|exists:agenda_items,id',
-            'text' => 'required|string',
-            'requires_unanimous' => 'boolean',
-        ]);
-
-        return Resolution::create($data);
+        return $this->service->create($request->all());
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Resolution $resolution)
     {
-        //
+        return $this->service->show($resolution);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Resolution $resolution)
     {
-         return $resolution->load('votes.user');
+        return $this->service->update($resolution, $request->all());
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Resolution $resolution)
     {
-        //
+        $this->service->delete($resolution);
+        return response()->noContent();
     }
 }

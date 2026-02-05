@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Models\AgendaItem;
+use App\Services\AgendaItemService;
 use Illuminate\Http\Request;
 
 class AgendaItemController
@@ -9,48 +11,33 @@ class AgendaItemController
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-
-    }
+    public function __construct(
+        protected AgendaItemService $service
+    ) {}
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'meeting_id' => 'required|exists:meetings,id',
-            'title' => 'required|string',
-            'description' => 'nullable|string',
-        ]);
-
-        return AgendaItem::create($data);
+        return $this->service->create($request->all());
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        
-    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, AgendaItem $agendaItem)
     {
-        $agendaItem->update($request->only(['title','description']));
-        return $agendaItem;
+        return $this->service->update($agendaItem, $request->all());
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(AgendaItem $agendaItem)
     {
-        $agendaItem->delete();
+        $this->service->delete($agendaItem);
         return response()->noContent();
     }
 }

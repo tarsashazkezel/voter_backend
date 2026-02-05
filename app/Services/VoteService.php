@@ -4,19 +4,22 @@ namespace App\Services;
 
 use App\Models\Resolution;
 use App\Models\User;
+use App\Models\Vote;
 
 class VoteService
 {
-    public function __construct()
+    public function vote(User $user, Resolution $resolution, string $vote): Vote
     {
-        //
+        return Vote::create([
+            'user_id' => $user->id,
+            'resolution_id' => $resolution->id,
+            'vote' => $vote,
+        ]);
     }
      public function calculateResult(Resolution $resolution): array{
         $votes = $resolution->votes()->with('user')->get();
 
-        $yes = 0;
-        $no = 0;
-        $abstain = 0;
+        $yes = $no = $abstain = 0;
 
         foreach ($votes as $vote) {
             $weight = $vote->user->ownership_ratio;

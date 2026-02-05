@@ -7,11 +7,17 @@ use App\Http\Controllers\api\MeetingController;
 use App\Http\Controllers\api\ResolutionController;
 use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\api\VoteController;
+use App\Http\Controllers\api\AuthenticationController;
 
 
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
+
+Route::post('/register', [AuthenticationController::class, 'register']);
+Route::post('/login', [AuthenticationController::class, 'login']);
+
+Route::middleware('auth:sanctum')->post('/logout', [AuthenticationController::class, 'logout']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('meetings', MeetingController::class);
